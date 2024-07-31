@@ -15,7 +15,7 @@ const EditUser = () => {
   }, [index]);
 
   const handleChange = (e) => {
-    const { name, value } = e.target.value;
+    const { name, value } = e.target;
     setUser((prevUser) => ({
       ...prevUser,
       [name]: value,
