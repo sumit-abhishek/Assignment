@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 const EditUser = () => {
   const { index } = useParams();
   const [user, setUser] = useState(null);
-  const [value, setValue] = useState();
+  // const [value, setValue] = useState();
 
   useEffect(() => {
     const data = fetchFromLocalStorage("userData") || [];
@@ -14,11 +14,19 @@ const EditUser = () => {
     }
   }, [index]);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
+  const handleChangeAddressLine1 = (e) => {
+    const { value } = e.target;
     setUser((prevUser) => ({
       ...prevUser,
-      [name]: value,
+      addressLine1: value,
+    }));
+  };
+
+  const handleChangeAddressLine2 = (e) => {
+    const { value } = e.target;
+    setUser((prevUser) => ({
+      ...prevUser,
+      addressLine2: value,
     }));
   };
 
@@ -58,7 +66,12 @@ const EditUser = () => {
           </div>
           <div className="col-md-3">
             <label className="form-label">Email Address</label>
-            <input type="email" className="form-control" value={user.email} />
+            <input
+              type="email"
+              className="form-control"
+              value={user.email}
+              name="email"
+            />
           </div>
           <div className="col-md-3">
             <label className="form-label">Mobile No</label>
@@ -81,7 +94,7 @@ const EditUser = () => {
               placeholder="Address Line 1"
               maxLength={255}
               value={user.addressLine1}
-              onChange={handleChange}
+              onChange={handleChangeAddressLine1}
               required
             />
           </div>
@@ -92,7 +105,7 @@ const EditUser = () => {
               className="form-control"
               placeholder="Address Line 2"
               value={user.addressLine2}
-              onChange={handleChange}
+              onChange={handleChangeAddressLine2}
             />
           </div>
           <div className="col-md-4">
