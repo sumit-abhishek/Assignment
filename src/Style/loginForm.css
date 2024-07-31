@@ -1,0 +1,10 @@
+.main {
+  display: flex;
+  justify-content: center;
+}
+.login-form {
+  width: 70%;
+}
+#panNumber {
+  text-transform: uppercase;
+}
